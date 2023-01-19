@@ -1,0 +1,25 @@
+﻿@model DistanceEducation.Models.DisciplineGroup;
+
+@{
+    List<Discipline> disciplines = ViewData["Discipline"] != null ? (List<Discipline>)ViewData["Discipline"] : null;
+}
+
+<div>
+    <h1 class="question">Удаление дисциплины</h1><br /><br />
+    <form asp-action="DeleteDiscipline">
+        <label asp-for="DisciplineId">Выберите дисциплину</label>
+        <select asp-for="DisciplineId">
+            <option value="">Выберите дисциплину</option>
+            @foreach (var item in disciplines)
+            {
+                        <option value="@item.Id">@item.DisciplineName</option>
+            }
+        </select>
+        <br /> <br />
+        <button type="submit" class="serch-btn btn-otpravit">Удалить</button>
+    </form>
+    <br />
+    <div>
+        <a asp-action="Index" class="serch-btn btn-otpravit">Вернуться к списку групп</a>
+    </div>
+</div>

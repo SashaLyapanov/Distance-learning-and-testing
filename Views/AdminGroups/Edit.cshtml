@@ -1,0 +1,35 @@
+﻿@model DistanceEducation.Models.Group
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="question">Редактировать группу</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="GroupName" class="control-label">Название группы</label>
+                <input asp-for="GroupName" class="form-control" />
+                <span asp-validation-for="GroupName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="serch-btn btn-otpravit" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+<div>
+    <a asp-action="Index" class="serch-btn btn-otpravit">Вернуться к списку групп</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

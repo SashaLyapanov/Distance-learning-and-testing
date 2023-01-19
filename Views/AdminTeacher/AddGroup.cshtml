@@ -1,0 +1,25 @@
+﻿@model DistanceEducation.Models.GroupTeacher;
+
+@{
+    List<Group> groups = ViewData["Group"] != null ? (List<Group>)ViewData["Group"] : null;
+}
+
+<div>
+    <h1 class="question">Добавление группы</h1><br /><br />
+    <form asp-action="AddGroup">
+        <label asp-for="GroupsId">Выберите группу</label>
+        <select asp-for="GroupsId">
+            <option value="">Выберите группу</option>
+            @foreach (var item in groups)
+            {
+                    <option value="@item.Id">@item.GroupName</option>
+            }
+        </select>
+        <br /> <br />
+        <button type="submit" class="serch-btn btn-otpravit">Добавить</button>
+    </form>
+    <br />
+    <div>
+        <a asp-action="Index" class="serch-btn btn-otpravit">Вернуться к списку преподавателей</a>
+    </div>
+</div>

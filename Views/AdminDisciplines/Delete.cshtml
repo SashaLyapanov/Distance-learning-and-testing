@@ -1,0 +1,27 @@
+﻿@model DistanceEducation.Models.Discipline
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="question">Удаление дисциплины</h1>
+<h3>Вы уверены, что хотите соверить это действие?</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DisciplineName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DisciplineName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+       <input type="submit" value="Delete" class="serch-btn btn-otpravit"/>
+        <br /><br />
+        <a asp-action="Index" class="serch-btn btn-otpravit">Вернуться к списку дисциплин</a>
+    </form>
+</div>

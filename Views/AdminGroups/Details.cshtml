@@ -1,0 +1,23 @@
+﻿@model DistanceEducation.Models.Group
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="question">Информация о группе</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="serch-btn btn-otpravit">Редактировать</a>
+    <a asp-action="Index" class="serch-btn btn-otpravit">Вернуться к списку групп</a>
+</div>

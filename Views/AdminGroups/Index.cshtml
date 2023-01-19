@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DistanceEducation.Models.Group>
+
+@{
+    ViewData["Title"] = "Index";
+    List<Discipline> disciplines = ViewData["Discipline"] != null ? (List<Discipline>)ViewData["Discipline"] : null;
+    List<DisciplineGroup> disciplineGroups = ViewData["DisciplineGroup"] != null ? (List<DisciplineGroup>)ViewData["DisciplineGroup"] : null;
+}
+@{
+    int id = (int)TempData["userIdToIndex"];
+}
+
+<h1 class="question">Список групп</h1>
+
+<p>
+    <a asp-action="Create" class="serch-btn btn-otpravit">Добавить группу</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                Disciplines
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+                @foreach (var items2 in disciplineGroups)
+                    {
+                        if (items2.GroupsId == item.Id)
+                        {
+                            <p>@disciplines.Where(a=>a.Id==items2.DisciplineId).Select(a=>a.DisciplineName).FirstOrDefault().ToString()</p>
+                        }
+                    }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детальная информация</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> |
+                    <a asp-action="AddDiscipline" asp-route-id="@item.Id">Добавить дисциплину</a> |
+                        <a asp-action="DeleteDiscipline" asp-route-id="@item.Id">Удалить дисциплину</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<br />
+<div>
+    <a asp-controller="Admin" asp-action="MainPageAdmin" asp-route-id="@id" class="serch-btn btn-otpravit">Вернуться на главную страницу</a>
+</div>
